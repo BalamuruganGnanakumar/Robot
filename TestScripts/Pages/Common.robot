@@ -88,16 +88,10 @@ NavigatetoProductConfigurator
     Sleep    10
     Switch Window   Property And Casualty
     log to console   Switch Window to New Tab
-#    Wait For Condition	return document.readyState == "complete"
     Sleep    22
-#    Wait Until Page Contains    ${formslink}    40s
-#    Wait Until Element Is Visible   ${formslink}  40
-#    Wait Until Element Is Enabled   ${formslink}    40
-#    Wait For Condition	return document.readyState == "complete"
-#    Wait Until Element Is Visible   ${SearchBtn}  40
-#    Wait Until Element Is Enabled   ${SearchBtn}    40
-    Click Element   ${formslink}
-    log to console   Clicked on Forms
+    Go To    https://qa.wsandco.com/ps-pandc/Forms/GoToForms/
+    #Click Element   ${formslink}
+    #log to console   Clicked on Forms
     Wait For Condition	return document.readyState == "complete"
     Wait Until Element Is Visible  ${ProdConfig}  40
     Wait Until Element Is Enabled  ${ProdConfig}    40
