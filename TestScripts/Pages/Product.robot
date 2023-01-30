@@ -4,9 +4,8 @@ Library     Screenshot
 Library     String
 Resource    ../../TestScripts/Pages/Common.robot
 *** Variables ***
-
-
-${productnameinput}     xpath:/html/body/app-root/div/div/app-add-or-edit-product/div/div[2]/div[2]/app-product-tab-component/div/form/div/div[1]/div/div/input
+${Addproductbtn}            xpath://a[@class='o-button btn-add-new-prod' and @role='button']
+${productnameinput}         xpath:/html/body/app-root/div/div/app-add-or-edit-product/div/div[2]/div[2]/app-product-tab-component/div/form/div/div[1]/div/div/input
 ${policytypecodeinput}      xpath:/html/body/app-root/div/div/app-add-or-edit-product/div/div[2]/div[2]/app-product-tab-component/div/form/div/div[4]/div/div/app-reusable-type-ahead-dropdown/input
 ${policytypecodeopn}        xpath:/html/body/div/div/div/div/mat-option[4]/span
 ${templatetypeinput}        xpath:/html/body/app-root/div/div/app-add-or-edit-product/div/div[2]/div[2]/app-product-tab-component/div/form/div/div[7]/div/div/app-reusable-type-ahead-dropdown/input
@@ -49,14 +48,15 @@ ${DT6opn}   xpath://span[contains(text(), 'Checkbox')]
 ProductForm
     log to console   AddProduct_Started
     Sleep    15
-    Wait Until Page Contains Element    ${Addproductbtn}    20
-    Wait Until Element Is Visible  ${Addproductbtn}  20
-    Wait Until Element Is Enabled  ${Addproductbtn}  20
+    Wait Until Element Is Visible   ${Addproductbtn}  20
     Click Element  ${Addproductbtn}
     log to console   Addproductbtn_clicked
+    Sleep    3
     ${PRODUCT_NO}=  generate random string  5  [NUMBERS]
+    Wait Until Element Is Visible   ${productnameinput}  10
     Input Text    ${productnameinput}   Product Liability ${PRODUCT_NO}
-    Input Text    ${editiondateinput}    1/31/2023
+    Wait Until Element Is Visible   ${editiondateinput}  10
+    Input Text    ${editiondateinput}    2/31/2023
     Sleep    5
     Wait Until Element Is Visible   ${policytypecodeinput}  20
     Wait Until Element Is Enabled   ${policytypecodeinput}
